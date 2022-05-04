@@ -3,34 +3,43 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.learning.codingchallengesecond.ViewModelMainActivity" />
+    </data>
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edit_text"
+            android:id="@+id/input_edit_text"
             android:layout_width="260dp"
             android:layout_height="86dp"
             android:layout_marginStart="75dp"
-            android:layout_marginTop="106dp"
             android:layout_marginEnd="76dp"
             android:autofillHints=""
             android:ems="10"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/addition"
+            android:inputType="number"
+            android:text="@={viewModel.inputValue}"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.15" />
 
         <Button
-            android:id="@+id/addition"
+            android:id="@+id/insert_button"
             android:layout_width="157dp"
             android:layout_height="82dp"
             android:layout_marginStart="127dp"
             android:layout_marginEnd="127dp"
+            android:onClick="@{()->viewModel.totalSum()}"
             android:text="@string/add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,13 +48,13 @@
             app:layout_constraintVertical_bias="0.534" />
 
         <TextView
-            android:id="@+id/total"
+            android:id="@+id/result_text_view"
             android:layout_width="112dp"
             android:layout_height="46dp"
             android:layout_marginStart="137dp"
             android:layout_marginEnd="137dp"
             android:gravity="center"
-            android:text="@string/_0"
+            android:text="@{String.valueOf(viewModel.totalOutput)}"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
